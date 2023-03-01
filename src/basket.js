@@ -6,12 +6,15 @@ class Basket {
     this.capacity = 5
   }
 
-  addItem(sku) {
-    if (this.items.length < this.capacity) {
+  addItem(sku, quantity = 1) {
+    if (this.items.length + quantity < this.capacity) {
       const newItem = inventory.find((bagel) => bagel.sku === sku)
-      return this.items.push(newItem)
+      for (let i = 0; i < quantity; i++) {
+        this.items.push(newItem)
+      }
+      return this.items
     } else {
-      return 'Sorry, your basket is full.'
+      return 'Sorry, your basket cannot hold that many bagels'
     }
   }
 
@@ -29,6 +32,19 @@ class Basket {
 
   setBasketCapacity(num) {
     this.capacity = num
+  }
+
+  bagelPrice(sku) {
+    const newItem = inventory.find((bagel) => bagel.sku === sku)
+    return Number(newItem.price)
+  }
+
+  totalSum() {
+    let total = 0
+    this.items.forEach((bagel) => {
+      total += Number(bagel.price)
+    })
+    return total
   }
 }
 

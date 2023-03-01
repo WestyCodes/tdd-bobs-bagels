@@ -57,3 +57,33 @@ OUTPUT: Updates variable holding basket capacity.
 removeItem(sku) -> [{item}, {item}, ...] // or "Item Doesn't Exist" is that item is not in the basket.
 INPUT: sku (unique identifier)
 OUTPUT: Array of object item, but with item of input sku removed - unless that item didn't exist in the first place, then show an error.
+
+# Part 3
+
+As a member of the public,
+So that I can know how much my bagels are,
+I’d like to see the price of each item before I add it to my basket.
+
+As a member of the public
+So that I can buy many of my favorite bagel
+I'd like to be able to add the same type of bagel to my basket more than once
+
+As a member of the public,
+So that I can prepare to pay
+When I go to checkout I'd like to know the total sum of the bagels in my basket
+
+nouns: item, basket, price
+verbs: see price, add multiples, total sum.
+
+DOMAIN MODEL
+bagelPrice(sku) -> price of Bagel as a number.
+INPUT: sku - unqiue bagel identifier
+OUTPUT: Price as a number of specific bagel.
+
+addItem({item}, quantity = 1) -> [{item}, {item}, ...] // or "Basket is full!" if full // can add multiple items with quantity.
+INPUT: Item
+OUTPUT: Array of object Item, with item added - unless basket is full, then return an error, more than one object of same bagel added at once.
+
+totalSum(void) -> number - total price of all bagels in basket.
+INPUT: none.
+OUTPUT: total price of all bagels in basket, as a number.
