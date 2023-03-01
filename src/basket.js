@@ -3,11 +3,16 @@ const inventory = require('./inventory.js')
 class Basket {
   constructor(initialItems = []) {
     this.items = initialItems
+    this.capacity = 5
   }
 
   addItem(sku) {
-    const newItem = inventory.find((bagel) => bagel.sku === sku)
-    this.items.push(newItem)
+    if (this.items.length < this.capacity) {
+      const newItem = inventory.find((bagel) => bagel.sku === sku)
+      return this.items.push(newItem)
+    } else {
+      return 'Sorry, your basket is full.'
+    }
   }
 
   removeItem(sku) {
@@ -15,7 +20,15 @@ class Basket {
     this.items.find((bagel, index) =>
       bagel.sku === sku ? (indexToRemove = index) : null
     )
-    this.items.splice(indexToRemove, 1)
+    if (indexToRemove === null) {
+      return "Item Doesn't Exist"
+    } else {
+      return this.items.splice(indexToRemove, 1)
+    }
+  }
+
+  setBasketCapacity(num) {
+    this.capacity = num
   }
 }
 

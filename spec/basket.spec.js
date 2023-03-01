@@ -24,7 +24,7 @@ describe('Item Basket', () => {
     // step 2: execute the code
     // ie. run the code for which we want to test the output
     basket.addItem('BGLE')
-    expectedResult = [
+    const expectedResult = [
       {
         sku: 'BGLO',
         price: '0.49',
@@ -78,5 +78,87 @@ describe('Item Basket', () => {
 
     // step 3: verify
     expect(basket.items).toEqual(expectedResult)
+  })
+  it('Should not be able to add more items than the basket capacity', () => {
+    // step1: setup
+    const bagelItems = [
+      {
+        sku: 'BGLO',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Onion'
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLS',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Sesame'
+      },
+      {
+        sku: 'COF',
+        price: '0.99',
+        name: 'Bagel',
+        variant: ''
+      }
+    ]
+    const basket = new Basket(bagelItems)
+
+    // step 2: execute
+    const res = basket.addItem('BGLP')
+    const expectedResult = 'Sorry, your basket is full.'
+
+    // step 3: verify
+    expect(res).toEqual(expectedResult)
+  })
+  it('Should be able to increase basket capacity', () => {
+    // step1: setup
+    const bagelItems = [
+      {
+        sku: 'BGLO',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Onion'
+      }
+    ]
+    const basket = new Basket(bagelItems)
+
+    // step 2: execute
+    basket.setBasketCapacity(10)
+    const res = basket.capacity
+    const expectedResult = 10
+
+    // step 3: verify
+    expect(res).toEqual(expectedResult)
+  })
+  it("Should not be able to remove an item that doesn't exist", () => {
+    // step1: setup
+    const bagelItems = [
+      {
+        sku: 'BGLO',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Onion'
+      }
+    ]
+    const basket = new Basket(bagelItems)
+
+    // step 2: execute
+    const res = basket.removeItem('BGLP')
+    const expectedResult = "Item Doesn't Exist"
+
+    // step 3: verify
+    expect(res).toEqual(expectedResult)
   })
 })
