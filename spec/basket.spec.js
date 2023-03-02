@@ -221,31 +221,249 @@ describe('Item Basket', () => {
         variant: 'Plain'
       },
       {
-        sku: 'BGLE',
-        price: '0.49',
+        sku: 'BGLP',
+        price: '0.39',
         name: 'Bagel',
-        variant: 'Everything'
-      },
-      {
-        sku: 'BGLS',
-        price: '0.49',
-        name: 'Bagel',
-        variant: 'Sesame'
-      },
-      {
-        sku: 'COF',
-        price: '0.99',
-        name: 'Bagel',
-        variant: ''
+        variant: 'Plain'
       }
     ]
     const basket = new Basket(bagelItems)
 
     // step 2: execute
     const res = basket.totalSum()
-    const expectedResult = 2.85
+    const expectedResult = 1.27
 
     // step 3: verify
     expect(res).toEqual(expectedResult)
+  })
+  it('Should be able to show the total price of Coffee & Plain Bagel, with special offers applied', () => {
+    // step1: setup
+    const bagelItems = [
+      {
+        sku: 'COF',
+        price: '0.99',
+        name: 'Bagel',
+        variant: ''
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      }
+    ]
+    const basket = new Basket(bagelItems)
+
+    // step 2: execute
+    const res = basket.totalSum()
+    const expectedResult = 1.25
+
+    // step 3: verify
+    expect(res).toEqual(expectedResult)
+  })
+  it('Should be able to show the total price of 6 Onion Bagels, with special offers applied', () => {
+    // step1: setup
+    const bagelItems = [
+      {
+        sku: 'BGLO',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Onion'
+      },
+      {
+        sku: 'BGLO',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Onion'
+      },
+      {
+        sku: 'BGLO',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Onion'
+      },
+      {
+        sku: 'BGLO',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Onion'
+      },
+      {
+        sku: 'BGLO',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Onion'
+      },
+      {
+        sku: 'BGLO',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Onion'
+      }
+    ]
+    const basket = new Basket(bagelItems)
+
+    // step 2: execute
+    const res = basket.totalSum()
+    const expectedResult = 2.49
+
+    // step 3: verify
+    expect(res).toEqual(expectedResult)
+  })
+  it('Should be able to show the total price of 12 Plain Bagels, with special offers applied', () => {
+    // step1: setup
+    const bagelItems = [
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      }
+    ]
+    const basket = new Basket(bagelItems)
+
+    // step 2: execute
+    const res = basket.totalSum()
+    const expectedResult = 3.99
+
+    // step 3: verify
+    expect(res).toEqual(expectedResult)
+  })
+  it('Should be able to show the total price of 6 Everything Bagels, with special offers applied', () => {
+    // step1: setup
+    const bagelItems = [
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      }
+    ]
+    const basket = new Basket(bagelItems)
+
+    // step 2: execute
+    const res = basket.totalSum()
+    const expectedResult = 2.49
+
+    // step 3: verify
+    expect(res).toEqual(expectedResult)
+  })
+  it('Should be able to show the special offers for a specific bagel', () => {
+    // step1: setup
+    const bagelItems = []
+    const basket = new Basket(bagelItems)
+
+    // step 2: execute
+    const resBGLE = basket.specialOffer('BGLE')
+    const resBGLP = basket.specialOffer('BGLP')
+    const resBGLO = basket.specialOffer('BGLO')
+    const resCOF = basket.specialOffer('COF')
+    const expectedResultBGLE = '6 Everything Bagels for 2.49'
+    const expectedResultBGLO = '6 Onion Bagels for 2.49'
+    const expectedResultBGLP =
+      '12 Plain Bagels for 3.99, or 1 Coffee and 1 Plain Bagel for 1.25'
+    const expectedResultCOF = '1 Coffee and 1 Plain Bagel for 1.25'
+
+    // step 3: verify
+    expect(resBGLE).toEqual(expectedResultBGLE)
+    expect(resBGLP).toEqual(expectedResultBGLP)
+    expect(resBGLO).toEqual(expectedResultBGLO)
+    expect(resCOF).toEqual(expectedResultCOF)
   })
 })

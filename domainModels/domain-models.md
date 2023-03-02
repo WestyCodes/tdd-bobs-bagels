@@ -87,3 +87,25 @@ OUTPUT: Array of object Item, with item added - unless basket is full, then retu
 totalSum(void) -> number - total price of all bagels in basket.
 INPUT: none.
 OUTPUT: total price of all bagels in basket, as a number.
+
+# Extension 1:
+
+As a Bob's Bagels Manager,
+So that members of public pay the correct price,
+When they go to checkout, special offers should be applied to the total price.
+
+As a member of public,
+So that I can know the price of bagels,
+I'd like to be able to see special offers.
+
+nouns: checkout, special offers, total price
+verbs: applied, see
+
+DOMAIN MODEL
+totalSum(void) -> number - total price of all bagels in basket // with special offers applied.
+INPUT: none.
+OUTPUT: total price of all bagels in basket // with special offers applied, as a number.
+
+specialOffer(sku) -> special offer
+INPUT: sku (bagel unique identifier)
+OUTPUT: Special offer, as a string.
