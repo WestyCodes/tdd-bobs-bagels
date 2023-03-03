@@ -109,3 +109,26 @@ OUTPUT: total price of all bagels in basket // with special offers applied, as a
 specialOffer(sku) -> special offer
 INPUT: sku (bagel unique identifier)
 OUTPUT: Special offer, as a string.
+
+# Extension 2:
+
+As a member of public,
+So that I can have a record of my order,
+I'd like to have a detailed receipt with todays date and time of order
+
+As a member of public,
+So that I can have a record of my order,
+I'd like to have a detailed receipt with an itemised list, with quantities and prices.
+
+As a member of public,
+So that I can have a record of my order,
+I'd like to have a detailed receipt with the total price.
+
+As the owner of Bob's Bagels,
+So that the public will know where they bought from,
+I'd like to have the company name, and a thank you message on the receipt.
+
+DOMAIN MODEL
+printReceipt(basket: [items...]) -> returns multiline string
+INPUT: An array of object items.
+OUTPUT: an array of strings showimg: name, date&time, itemised items, quantities, prices, and total, with thank you message.

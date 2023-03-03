@@ -466,4 +466,202 @@ describe('Item Basket', () => {
     expect(resBGLO).toEqual(expectedResultBGLO)
     expect(resCOF).toEqual(expectedResultCOF)
   })
+  it('Should be able to show total savings', () => {
+    // step1: setup
+    const bagelItems = [
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      }
+    ]
+    const basket = new Basket(bagelItems)
+
+    // step 2: execute
+    const res = basket.totalSavings()
+    const expectedResult = 0.45
+
+    // step 3: verify
+    expect(res).toEqual(expectedResult)
+  })
+  it('Should be able to print a full itemised receipt.', () => {
+    // step1: setup
+    const bagelItems = [
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      }
+    ]
+    const basket = new Basket(bagelItems)
+
+    // step 2: execute
+    const res = basket.printReceipt()
+    const expectedResult = [
+      `    ~~~ Bob's Bagels ~~~    `,
+      `          2023-3-3          `,
+      `----------------------------`,
+      `Everything Bagel   1   £0.49`,
+      `----------------------------`,
+      `Total                  £0.49`,
+      `         Thank you          `,
+      `      for your order!       `
+    ]
+
+    // step 3: verify
+    expect(res).toEqual(expectedResult)
+  })
+  it('Should be able to print a full itemised receipt, with special offers.', () => {
+    // step1: setup
+    const bagelItems = [
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      }
+    ]
+    const basket = new Basket(bagelItems)
+
+    // step 2: execute
+    const res = basket.printReceipt()
+    const expectedResult = [
+      `    ~~~ Bob's Bagels ~~~    `,
+      `          2023-3-3          `,
+      `----------------------------`,
+      `Everything Bagel   6   £2.94`,
+      `----------------------------`,
+      `Total Savings         -£0.45`,
+      `Total                  £2.49`,
+      `         Thank you          `,
+      `      for your order!       `
+    ]
+
+    // step 3: verify
+    expect(res).toEqual(expectedResult)
+  })
+  it('Should be able to print a full itemised receipt, with multiple items.', () => {
+    // step1: setup
+    const bagelItems = [
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLE',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Everything'
+      },
+      {
+        sku: 'BGLO',
+        price: '0.49',
+        name: 'Bagel',
+        variant: 'Onion'
+      },
+      {
+        sku: 'BGLP',
+        price: '0.39',
+        name: 'Bagel',
+        variant: 'Plain'
+      },
+      {
+        sku: 'COF',
+        price: '0.99',
+        name: 'Bagel',
+        variant: ''
+      }
+    ]
+    const basket = new Basket(bagelItems)
+
+    // step 2: execute
+    const res = basket.printReceipt()
+    const expectedResult = [
+      `    ~~~ Bob's Bagels ~~~    `,
+      `          2023-3-3          `,
+      `----------------------------`,
+      `Onion Bagel        1   £0.49`,
+      `Plain Bagel        1   £0.39`,
+      `Everything Bagel   3   £1.47`,
+      `Coffee             1   £0.99`,
+      `----------------------------`,
+      `Total Savings         -£0.13`,
+      `Total                  £3.21`,
+      `         Thank you          `,
+      `      for your order!       `
+    ]
+
+    // step 3: verify
+    expect(res).toEqual(expectedResult)
+  })
 })
