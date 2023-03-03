@@ -526,12 +526,16 @@ describe('Item Basket', () => {
       }
     ]
     const basket = new Basket(bagelItems)
+    const date = new Date()
+    const currentDate = `${date.getFullYear()}-${
+      date.getMonth() + 1
+    }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
 
     // step 2: execute
     const res = basket.printReceipt()
     const expectedResult = [
       `    ~~~ Bob's Bagels ~~~    `,
-      `          2023-3-3          `,
+      `       ${currentDate}       `,
       `----------------------------`,
       `Everything Bagel   1   £0.49`,
       `----------------------------`,
@@ -584,12 +588,16 @@ describe('Item Basket', () => {
       }
     ]
     const basket = new Basket(bagelItems)
+    const date = new Date()
+    const currentDate = `${date.getFullYear()}-${
+      date.getMonth() + 1
+    }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
 
     // step 2: execute
     const res = basket.printReceipt()
     const expectedResult = [
       `    ~~~ Bob's Bagels ~~~    `,
-      `          2023-3-3          `,
+      `       ${currentDate}       `,
       `----------------------------`,
       `Everything Bagel   6   £2.94`,
       `----------------------------`,
@@ -644,11 +652,15 @@ describe('Item Basket', () => {
     ]
     const basket = new Basket(bagelItems)
 
+    const date = new Date()
+    const currentDate = `${date.getFullYear()}-${
+      date.getMonth() + 1
+    }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
     // step 2: execute
     const res = basket.printReceipt()
     const expectedResult = [
       `    ~~~ Bob's Bagels ~~~    `,
-      `          2023-3-3          `,
+      `       ${currentDate}       `,
       `----------------------------`,
       `Onion Bagel        1   £0.49`,
       `Plain Bagel        1   £0.39`,

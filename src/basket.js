@@ -155,15 +155,10 @@ class Basket {
 
     const title = `    ~~~ Bob's Bagels ~~~    `
     const date = new Date()
-    const currentDate =
-      date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
-    //   ' ' +
-    //   date.getHours() +
-    //   ':' +
-    //   date.getMinutes() +
-    //   ':' +
-    //   date.getSeconds()
-    const receiptDate = `          ${currentDate}          `
+    const currentDate = `${date.getFullYear()}-${
+      date.getMonth() + 1
+    }-${date.getDate()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`
+    const receiptDate = `       ${currentDate}       `
     const lineBreak = `----------------------------`
     const savings = `Total Savings         -£${this.totalSavings()}`
     const total = `Total                  £${this.totalSum()}`
